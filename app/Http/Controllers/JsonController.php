@@ -10,7 +10,7 @@ class JsonController extends Controller
 {
     public function import() 
     {
-        Excel::import(new CreditTypesImport, 'users.xlsx');
+        //Excel::import(new CreditTypesImport, 'users.xlsx');
         
         return redirect('/')->with('success', 'All good!');
     }
