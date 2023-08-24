@@ -63,8 +63,8 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo' => '<b>Credits</b>Type',
+    'logo_img' => 'vendor/adminlte/dist/img/logoEvertec.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -311,13 +311,13 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
-        [
+        /**[
             'text'        => 'pages',
             'url'         => 'admin/pages',
             'icon'        => 'far fa-fw fa-file',
             'label'       => 4,
             'label_color' => 'success',
-        ],
+        ],**/
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
@@ -369,19 +369,40 @@ return [
         ],
         ['header' => 'labels'],
         [
-            'text'       => 'important',
+            'text'       => 'Honduras',
             'icon_color' => 'red',
-            'url'        => '#',
+            'icon' => 'fa fa-credit-card',
+            'url' => "/honduras",
         ],
         [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
+            'text'       => 'Panamá',
+            'icon_color' => '',
+            'icon' => 'fa fa-credit-card',
+            'url'        => '/panama',
         ],
         [
-            'text'       => 'information',
+            'text'       => 'BCR',
             'icon_color' => 'cyan',
-            'url'        => '#',
+            'icon' => 'fa fa-credit-card',
+            'url'        => '/bcr',
+        ],
+        [
+            'text'       => 'Davivienda',
+            'icon_color' => 'yellow',
+            'icon' => 'fa fa-credit-card',
+            'url'        => '/davivienda',
+        ],
+        [
+            'text'       => 'Ecuador',
+            'icon_color' => 'green',
+            'icon' => 'fa fa-credit-card',
+            'url'        => '/ecuador',
+        ],
+        [
+            'text'       => 'Uruguay',
+            'icon_color' => 'blue',
+            'icon' => 'fa fa-credit-card',
+            'url'        => '/uruguay',
         ],
     ],
 
