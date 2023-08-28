@@ -2,23 +2,28 @@
 
 namespace App\Imports;
 
-use App\Models\User;
+use App\Models\CreditsTypeModel;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Concerns\ToModel;
 
-class UsersImport implements ToModel
+class CreditTypesImport implements ToModel
 {
     /**
      * @param array $row
      *
-     * @return User|null
+     * @return CreditsTypeModel|null
      */
     public function model(array $row)
     {
-        return new User([
-           'name'     => $row[0],
-           'email'    => $row[1], 
-           'password' => Hash::make($row[2]),
+        return new CreditsTypeModel([
+           'terminal_alternativo' => $row[0],
+           'merchant_alternativo'    => $row[1], 
+           'tipos_credito' => $row[2],
+           'bin' => $row[3],
+           'rango_inicial' => $row[4],
+           'rango_final' => $row[5],
+           'franquicia' => $row[6],
+           'bin_name' => $row[7],
         ]);
     }
 }

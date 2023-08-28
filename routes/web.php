@@ -35,6 +35,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/davivienda', [DaviviendaController::class, 'index'])->name('davivienda.index');
     Route::get('/uruguay', [UruguayController::class, 'index'])->name('uruguay.index');
     Route::get('/panama', [UruguayController::class, 'index'])->name('uruguay.index');
+    Route::get('/import', [BcrController::class, 'import'])->name('bcr.import');
 });
 
 /**Route::get('/honduras', function () {
