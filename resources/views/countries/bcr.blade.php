@@ -15,31 +15,63 @@
                     Tipos créditos Banco de Costa Rica
                 </div>
                 <div class="card-body">
-                    <form role="form">
+                    <form method="POST" action="{{ route('bcr.upload') }}" accept-charset="UTF-8" enctype="multipart/form-data">
+                        {{ csrf_field() }}
                         <div class="form-group"><br>
+                        <div class="row">
                             <label class="card-tittle" for="tipo_credito_bcr">Adjuntar archivo CSV</label>
-                            <input type="file" id="tipo_credito_bcr">
-                            <p class="help-block">Carga tu archivo de tipos crédito BCR.</p>
+                            <input type="file" id="tipo_credito_bcr" name="tipo_credito_bcr" required>
+                        </div>
+                        <div class="row">
+                            <input class="btn btn-primary" type="submit" value="Generar">
+                        </div>
                         </div>
                     </form>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
                 </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        JSON para los tipos de Créditos descritos...
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Genera tu JSON</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        @isset($data)    
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            JSON para los tipos de Créditos descritos...
+                        </div>
+                        <div class="card-body">
+                            <code>
+                                {
+                                    "include": [
+                                        {
+                                            "ranges": [
+                                                @foreach ($data as $item )                                                      
+                                                    {
+                                                        "bin": "{{ $item[3] }}",
+                                                        "end": "{{ $item[5] }}",
+                                                        "start": "{{ $item[4] }}"
+                                                    }@if (!$loop->last),@endif
+                                                @endforeach
+                                                ],
+                                            "credits": [
+                                                @foreach ($credits as $item)
+                                                    {
+                                                        "code": "{{ $item[0] }}",
+                                                        "description": "{{ $item[1] }}",
+                                                        "installment": "{{ $item[2] }}",
+                                                        "merchantCode": "{{ $item[3] }}",
+                                                        "terminalNumber": "{{ $item[4] }}"
+                                                    } @if (!$loop->last),@endif
+                                                @endforeach
+                                                ]
+                                        }
+                                        ]
+                                }
+                            </code>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        @endisset
     </div>
 @stop
 

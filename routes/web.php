@@ -31,11 +31,13 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/honduras', [HondurasController::class, 'index'])->name('honduras.index');
     Route::get('/bcr', [BcrController::class, 'index'])->name('bcr.index');
+    Route::post('/bcr/upload', [BcrController::class, 'upload'])->name('bcr.upload');
     Route::get('/ecuador', [EcuadorController::class, 'index'])->name('ecuador.index');
     Route::get('/davivienda', [DaviviendaController::class, 'index'])->name('davivienda.index');
+    Route::post('/davivienda/upload', [DaviviendaController::class, 'upload'])->name('davivienda.upload');
     Route::get('/uruguay', [UruguayController::class, 'index'])->name('uruguay.index');
     Route::get('/panama', [UruguayController::class, 'index'])->name('uruguay.index');
-    Route::get('/import', [BcrController::class, 'import'])->name('bcr.import');
+    //Route::get('/import', [BcrController::class, 'import'])->name('bcr.import');
 });
 
 /**Route::get('/honduras', function () {
