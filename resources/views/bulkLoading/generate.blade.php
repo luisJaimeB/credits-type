@@ -15,11 +15,11 @@
                 Apartado para cargue masivo de BINES para la franquicia de Master Card
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('loading.upload') }}" accept-charset="UTF-8" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('loading.generate') }}" accept-charset="UTF-8" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="form-group"><br>
                         <div class="row">
-                            <label class="card-tittle" for="cargue_masivo_master">Adjuntar archivo CSV</label>
+                            <label class="card-tittle" for="cargue_masivo_master">Adjuntar archivo CSV </label><br>
                             <input type="file" id="cargue_masivo_master" name="cargue_masivo_master" required>
                         </div>
                         <div class="row">

@@ -39,7 +39,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/uruguay', [UruguayController::class, 'index'])->name('uruguay.index');
     Route::get('/panama', [UruguayController::class, 'index'])->name('uruguay.index');
     Route::get('/bulk-loading', [BulkLoadingController::class, 'index'])->name('loading.index');
-    Route::get('/bulk-loading/generate', [BulkLoadingController::class, 'upload'])->name('loading.upload');
+    Route::post('/bulk-loading/generate', [BulkLoadingController::class, 'generate'])->name('loading.generate');
+    Route::get('/bulk-loading/download', [BulkLoadingController::class, 'download'])->name('loading.download');
 });
 
 /**Route::get('/honduras', function () {
