@@ -35,7 +35,7 @@ class DaviviendaController extends Controller
                 $data[] = $row;
             }
         }
-
+        //dd($data);
         $seenValues = [];
         $seenCredits = [];
         $credits = [];
@@ -50,20 +50,35 @@ class DaviviendaController extends Controller
                 $seenValues[] = $valueToCheck; // Agregar el valor a la lista de valores vistos
             }
 
-            $creditType = $row[2];
+            $creditType = explode(",", $row[2]);
+            //$code = [];
+            $installment = [];
             $merchanCode = $row[1];
-            $installment = substr($creditType, 0, 2);
             $terminalNumber = $row[0];
-            $creditsA = [
-                $creditType,
-                'A Paguitos',
-                $installment,
-                $merchanCode,
-                $terminalNumber
 
-            ];
+            foreach ($creditType as $item) {
+                $validatePosCero = $item[0];
+                $validatePosOne = $item[1];
+                $validatedInstallment = null;
+
+                if ($validatePosCero === 0 or is_numeric($validatePosOne)) {
+                    if ($validatePosCero != 0 && is_numeric($validatePosOne)) {
+                        $validatedInstallment = $validatePosCero . $validatePosOne;
+                    } else {
+                        $validatedInstallment = $validatePosOne;
+                    }
+                }
+
+               $creditsF = [
+                   $code = $item,
+                   $desciption = "A Paguitos",
+                   $installment = (int)$validatedInstallment,
+                   $merchanCode,
+                   $terminalNumber
+               ];
+               $credits[] = $creditsF;
+            }
             
-            $credits[] = $creditsA;
         }
 
         foreach ($credits as $key => $item) {
