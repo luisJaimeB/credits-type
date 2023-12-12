@@ -369,6 +369,12 @@ return [
         ],
         ['header' => 'labels'],
         [
+            'text'       => 'Cargue Masivo',
+            'icon_color' => 'green',
+            'icon' => 'fa fa-spinner',
+            'url' => "/bulk-loading",
+        ],
+        [
             'text'       => 'Honduras',
             'icon_color' => 'red',
             'icon' => 'fa fa-credit-card',

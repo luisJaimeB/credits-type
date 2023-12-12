@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BcrController;
+use App\Http\Controllers\BulkLoading\BulkLoadingController;
 use App\Http\Controllers\DaviviendaController;
 use App\Http\Controllers\EcuadorController;
 use App\Http\Controllers\HondurasController;
@@ -37,7 +38,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/davivienda/upload', [DaviviendaController::class, 'upload'])->name('davivienda.upload');
     Route::get('/uruguay', [UruguayController::class, 'index'])->name('uruguay.index');
     Route::get('/panama', [UruguayController::class, 'index'])->name('uruguay.index');
-    //Route::get('/import', [BcrController::class, 'import'])->name('bcr.import');
+    Route::get('/bulk-loading', [BulkLoadingController::class, 'index'])->name('loading.index');
+    Route::post('/bulk-loading/generate', [BulkLoadingController::class, 'generate'])->name('loading.generate');
+    Route::get('/bulk-loading/download', [BulkLoadingController::class, 'download'])->name('loading.download');
 });
 
 /**Route::get('/honduras', function () {
