@@ -7,6 +7,8 @@ use App\Utils\CsvReaderMassFile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Response;
+use Spatie\TemporaryDirectory\TemporaryDirectory;
+
 
 class BulkLoadingController extends Controller
 {
@@ -37,12 +39,12 @@ class BulkLoadingController extends Controller
                 $data[] = $row;
             }
         }
-
+        //dd($data);
         $validatedIssuer = [];
         $dataValidated = [];
-        $validatedRangeI;
-        $validatedRangeF;
-        $validatedCountry;
+        $validatedRangeI = null;
+        $validatedRangeF = null;
+        $validatedCountry = null;
 
         foreach ($data as $key => $row) {
             if (isset($row[1])) {
@@ -75,16 +77,17 @@ class BulkLoadingController extends Controller
             $dataValidated[] = $dataFinal;
         }
 
-        $this->download($dataValidated);
-        
-        return view('bulkLoading.generate', compact('dataValidated'));
+        return $this->download($dataValidated);
     }
 
-    public function download (array $data) {
+    /* public function download (array $data) {
 
         $dataValidated = $data;
 
-        $csvPath = Storage::disk('local')->path('cargue_masivo_mastercard.csv');
+        $csvPath = Storage::disk('imports')->path('cargue_masivo_mastercard.csv');
+
+        // Creamos el archivo CSV
+        Storage::disk('imports')->put('cargue_masivo_mastercard.csv', '');
 
         // Abrimos el archivo CSV para escritura
         $file = fopen($csvPath, 'w');
@@ -100,13 +103,10 @@ class BulkLoadingController extends Controller
         // Cerramos el archivo
         fclose($file);
 
-        // Convertimos el recurso de archivo en una cadena
-        $fileString = file_get_contents($csvPath);
-
         // Configuramos la respuesta HTTP
-        return response()->download($fileString, 'cargue_masivo_mastercard.csv', [
+        return response()->download($csvPath, 'cargue_masivo_mastercard.csv', [
             'Content-Type' => 'text/csv',
             'Content-Disposition' => 'attachment; filename="cargue_masivo_mastercard.csv"',
         ]);
-    }
+    } */
 }
