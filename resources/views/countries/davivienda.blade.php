@@ -39,7 +39,6 @@
                             JSON para los tipos de Créditos descritos...
                         </div>
                         <div class="card-body">
-                            @dd($credits)
                             <code>
                                 {
                                     "include": [
@@ -58,7 +57,7 @@
                                                     {
                                                         "code": "{{ $item[0] }}",
                                                         "description": "{{ $item[1] }}",
-                                                        "installment": "{{ $item[2] }}",
+                                                        "installment": {{ $item[2] }},
                                                         "merchantCode": "{{ $item[3] }}",
                                                         "terminalNumber": "{{ $item[4] }}"
                                                     } @if (!$loop->last),@endif
