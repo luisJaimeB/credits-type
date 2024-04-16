@@ -53,7 +53,7 @@ class CreditDavFormattingAction implements ActionContract
                     return [
                         'code' => $creditType,
                         'description' => 'A paguitos',
-                        'installment' => (int)(substr($creditType, 0, 1) === "0") ? substr($creditType, 1, 1) : substr($creditType, 0, 2),
+                        'installment' => intval((substr($creditType, 0, 1) === "0") ? substr($creditType, 1, 1) : substr($creditType, 0, 2)),
                         'merchantCode' => $row[1],
                         'terminalNumber' => $row[0]
                     ];

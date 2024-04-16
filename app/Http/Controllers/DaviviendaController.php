@@ -39,6 +39,8 @@ class DaviviendaController extends Controller
 
         $data = (new CreditDavFormattingAction($data))->excecute();
 
+        dd($data);
+
         return view('countries.davivienda', compact('data'));
     }
 }
